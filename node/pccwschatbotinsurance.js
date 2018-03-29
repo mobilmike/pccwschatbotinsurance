@@ -272,12 +272,12 @@ function receivedMessage(event) {
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
 	
-	if (messageText.search("我有的保單")>=0){
+	if ((messageText.search("保單")>=0) && (messageText.search("查")>=0)){
 	   sendTextMessage(senderID,'您現擁有的保險計劃包括:');
 	   sendGenericPolicyMessage(senderID);
 
 	}
-	else if (messageText.search("其他的計劃")>=0){
+	else if ((messageText.search("其他")>=0) && ((messageText.search("計劃")>=0) || (messageText.search("保險")>=0) )){
 	   sendTextMessage(senderID,'很好!為提供更適合您的方案, 請核對您的個人基本信息。');
 	   sendGenericPolicy3AMessage(senderID);
 	}
@@ -307,7 +307,7 @@ function receivedMessage(event) {
 			sendHiMessage(senderID);
 			break;
 
-		  case 'image':
+		 /* case 'image':
 			requiresServerURL(sendImageMessage, [senderID]);
 			break;
 
@@ -357,7 +357,7 @@ function receivedMessage(event) {
 
 		  case 'account linking':
 			requiresServerURL(sendAccountLinking, [senderID]);
-			break;
+			break;*/
 
 		  default:
 			sendTextMessage(senderID, '你好!  請問有什麼需要幫助呢?');
